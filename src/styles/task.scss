@@ -1,0 +1,51 @@
+.task {
+  cursor: pointer;
+  background: #f4f5f7;
+  display: flex;
+  justify-content: space-around;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  padding: 30px 10px;
+
+  &.complete {
+    text-decoration: line-through;
+    background: #fff0f3;
+
+    &:hover {
+      transform: none;
+    }
+  }
+
+  &.task {
+    margin-top: 15px;
+  }
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  #task-description {
+    flex: 1;
+    margin-left: 30px;
+    font-size: 1.125em;
+    font-weight: 400;
+  }
+  
+  #task-options {
+    margin-right: 30px;
+
+    button {
+      background: none;
+      border: none;
+      padding: 5px;
+
+      svg {
+        font-size: 1.5em
+      }
+
+      &:hover {
+        color: #835afd;
+      }
+    }
+  }
+}
