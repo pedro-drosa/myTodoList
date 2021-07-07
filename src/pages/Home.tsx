@@ -39,6 +39,12 @@ export function Home() {
     inputRef.current?.focus();
   }
 
+  function handleRemoveTask(event: FormEvent) {
+    const currentTask = event.currentTarget.parentElement?.parentElement;
+    currentTask?.remove();
+    inputRef.current?.focus();
+  }
+
   function handleSetToday() {
     const date = new Date();
 
@@ -80,7 +86,7 @@ export function Home() {
         {
           tasks.map((task, index) => {
             return(
-              <Task key={index}>{task}</Task>
+              <Task key={index} handleRemoveTask={handleRemoveTask}>{task}</Task>
             )
           })
         }
