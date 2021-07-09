@@ -1,73 +1,82 @@
-header {
-  max-width: 960px;
-  margin: 60px auto;
+.content {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  >div {
-    display: flex;
-    align-items: center;
-    
-    span {
-      font-weight: 700;
-      font-size: 3.5em;
-      margin-right: 15px;
-    }
-    
-    ul {
-        list-style: none;
-    }
-  }
-
-  strong {
-    font-size: 1.5em;
-  }
-}
-
-main {
-  form {
-    display: flex;
-    max-width: 960px;
-    margin: 30px auto;
-    display: flex;
-    justify-content: center;
-  }
-
-  input {
-    font-size: 1.125em;
-    border: 1.5px solid #ebecf0;
-    background: #ebecf0;
-    border-radius:5px 0 0px 5px;
-    flex: 8;
-    padding: 20px;
-    margin-bottom: 30px;
-  }
-}
-
-aside {
+  flex-direction: column;
   max-width: 960px;
   margin: 0 auto;
+  padding:  60px 30px;
 
-  h3 {
-    color: #8b8d8b;
+  header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    text-transform: uppercase;
-    
-    &::before {
-      content: '';
-      background: #ebebeb;
-      flex: auto;
-      height: 1px;
+
+    >div {
+      display: flex;
+      align-items: center;
+      
+      span {
+        font-weight: 700;
+        font-size: 3.5em;
+        margin-right: 15px;
+      }
+      
+      ul {
+          list-style: none;
+      }
     }
 
-    &::after {
-      content: '';
-      background: #ebebeb;
-      flex: auto;
-      height: 1px;
+    strong {
+      font-size: 1.5em;
+    }
+  }
+
+  main {
+    form {
+      display: flex;
+      max-width: 960px;
+      margin: 30px auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    input {
+      font-size: 1.125em;
+      border: 1.5px solid #ebecf0;
+      background: #ebecf0;
+      border-radius:5px 0 0px 5px;
+      flex: 8;
+      padding: 20px;
+      margin-bottom: 30px;
+      transition: border-color .5s;
+
+      &:focus {
+        outline: none;
+        border-color: #8b8b8b;
+      }
+    }
+  }
+
+  aside {
+    h3 {
+      color: #8b8d8b;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-transform: uppercase;
+      
+      &::before {
+        content: '';
+        background: #ebebeb;
+        flex: auto;
+        height: 1px;
+      }
+
+      &::after {
+        content: '';
+        background: #ebebeb;
+        flex: auto;
+        height: 1px;
+      }
     }
   }
 }

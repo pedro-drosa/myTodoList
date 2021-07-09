@@ -68,7 +68,7 @@ export function Home() {
   }
 
   return (
-    <>
+    <div className='content'>
       <header>
         <div>
           <span>{today?.day}</span>
@@ -88,21 +88,19 @@ export function Home() {
             onChange={event => setNewTask(event.target.value)}
             value={newTask}
           />
-          <Button className="button" type="submit">Task</Button>
+          <Button className="button" type="submit">Add</Button>
         </form>
       </main>
       <aside>
         <h3>Scheduled Tasks</h3>
         {
-          tasks.length > 0 ?
           tasks.map((task, index) => {
             return(
               <Task key={index} handleRemoveTask={handleRemoveTask}>{task}</Task>
             )
-          }):
-          'No tasks available'
+          })
         }
       </aside>
-    </>
+    </div>
   )
 }
