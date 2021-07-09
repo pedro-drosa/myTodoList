@@ -48,4 +48,26 @@ main {
 aside {
   max-width: 960px;
   margin: 0 auto;
+
+  h3 {
+    color: #8b8d8b;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-transform: uppercase;
+    
+    &::before {
+      content: '';
+      background: #ebebeb;
+      flex: auto;
+      height: 1px;
+    }
+
+    &::after {
+      content: '';
+      background: #ebebeb;
+      flex: auto;
+      height: 1px;
+    }
+  }
 }

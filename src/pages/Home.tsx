@@ -18,15 +18,12 @@ export function Home() {
   const [today, setToday] = useState<TodayParams>(); 
   const [tasks, setTasks] = useState<string[]>([]);
   const [newTask, setNewTask] = useState('');
-  const inputRef = useRef<HTMLInputElement>(null)
-
-  useEffect(() =>{
+  const inputRef = useRef<HTMLInputElement>(null);
+  
+  useEffect(()=>{
     inputRef.current?.focus();
-  }, []);
-
-  useEffect(() => {
     handleSetToday();
-  }, [])
+  },[])
 
   function handleAddTask(event: FormEvent) {
     event.preventDefault();
@@ -42,6 +39,18 @@ export function Home() {
   function handleRemoveTask(event: FormEvent) {
     const currentTask = event.currentTarget.parentElement?.parentElement;
     currentTask?.remove();
+
+    const taskRemoved = currentTask?.firstChild?.firstChild?.textContent;
+
+    const indexRemoved = tasks.findIndex((task) => {
+      return task === taskRemoved;
+    });
+
+    const currentTasks = tasks.slice();
+
+    tasks.splice(indexRemoved,1);
+    setTasks([...currentTasks]);
+
     inputRef.current?.focus();
   }
 
@@ -75,7 +84,7 @@ export function Home() {
           <input 
             ref={inputRef}
             type="text" 
-            placeholder="Add Task"
+            placeholder="Add a new task"
             onChange={event => setNewTask(event.target.value)}
             value={newTask}
           />
@@ -83,12 +92,15 @@ export function Home() {
         </form>
       </main>
       <aside>
+        <h3>Scheduled Tasks</h3>
         {
+          tasks.length > 0 ?
           tasks.map((task, index) => {
             return(
               <Task key={index} handleRemoveTask={handleRemoveTask}>{task}</Task>
             )
-          })
+          }):
+          'No tasks available'
         }
       </aside>
     </>
