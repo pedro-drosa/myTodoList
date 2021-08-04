@@ -16,9 +16,20 @@ export function Home() {
   }
 
   const [today, setToday] = useState<TodayParams>(); 
-  const [tasks, setTasks] = useState<string[]>([]);
   const [newTask, setNewTask] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
+  
+  const [tasks, setTasks] = useState<string[]>(() => {
+    const storageTasks = localStorage.getItem('@myTodoList');
+    if(storageTasks) {
+      return JSON.parse(storageTasks);
+    }
+    return [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('@myTodoList', JSON.stringify(tasks));
+  },[tasks])
   
   useEffect(()=>{
     inputRef.current?.focus();
@@ -27,11 +38,15 @@ export function Home() {
 
   function handleAddTask(event: FormEvent) {
     event.preventDefault();
+    
     if(newTask.trim() === '') {
       return;
     }
-
+    
     setTasks([...tasks, newTask]);
+    localStorage.setItem('@myTodoList',JSON.stringify(tasks));
+
+    
     setNewTask('');
     inputRef.current?.focus();
   }
@@ -47,11 +62,13 @@ export function Home() {
     });
 
     const currentTasks = tasks.slice();
-
+    
     tasks.splice(indexRemoved,1);
+    
     setTasks([...currentTasks]);
 
     inputRef.current?.focus();
+    
   }
 
   function handleSetToday() {
