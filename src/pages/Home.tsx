@@ -15,11 +15,16 @@ export function Home() {
     year: string;
   }
 
+  type TasksParams = {
+    content: string;
+    finished?: boolean;
+  }
+
   const [today, setToday] = useState<TodayParams>(); 
   const [newTask, setNewTask] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
   
-  const [tasks, setTasks] = useState<string[]>(() => {
+  const [tasks, setTasks] = useState<TasksParams[]>(() => {
     const storageTasks = localStorage.getItem('@myTodoList');
     if(storageTasks) {
       return JSON.parse(storageTasks);
@@ -42,8 +47,12 @@ export function Home() {
     if(newTask.trim() === '') {
       return;
     }
+
+    const currentTask = {
+      content: newTask,
+    }
     
-    setTasks([...tasks, newTask]);
+    setTasks([...tasks, currentTask]);
     localStorage.setItem('@myTodoList',JSON.stringify(tasks));
 
     
@@ -52,23 +61,9 @@ export function Home() {
   }
 
   function handleRemoveTask(event: FormEvent) {
-    const currentTask = event.currentTarget.parentElement?.parentElement;
-    currentTask?.remove();
-
-    const taskRemoved = currentTask?.firstChild?.firstChild?.textContent;
-
-    const indexRemoved = tasks.findIndex((task) => {
-      return task === taskRemoved;
-    });
-
-    const currentTasks = tasks.slice();
-    
-    tasks.splice(indexRemoved,1);
-    
-    setTasks([...currentTasks]);
-
-    inputRef.current?.focus();
-    
+    const contentCurrentTask = event.currentTarget.parentElement?.parentElement?.firstElementChild?.firstElementChild?.innerHTML;
+    setTasks(tasks.filter( task => task.content !== contentCurrentTask));
+    inputRef.current?.focus(); 
   }
 
   function handleSetToday() {
@@ -113,7 +108,7 @@ export function Home() {
         {
           tasks.map((task, index) => {
             return(
-              <Task key={index} handleRemoveTask={handleRemoveTask}>{task}</Task>
+              <Task key={index} handleRemoveTask={handleRemoveTask}>{task.content}</Task>
             )
           })
         }
