@@ -4,8 +4,9 @@ import { FiCheck, FiRefreshCw, FiX } from 'react-icons/fi';
 import "../styles/task.scss";
 
 type TaskProps = {
-  children: string;
   finished?: boolean;
+  children: string;
+  createdAt: string;
   handleRemoveTask: (event: FormEvent) => void;
   handleCompleteTask: (event: FormEvent) => void;
 }
@@ -16,6 +17,7 @@ export function Task(props: TaskProps) {
     <div className={`task ${props.finished ? 'complete' : ''}`}>
       <div id="task-description">
         <p>{props.children}</p>
+        <p>{`${props.createdAt}`}</p>
       </div>
       <div id="task-options">
         <button onClick={props.handleCompleteTask}>

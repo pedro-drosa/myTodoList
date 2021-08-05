@@ -17,6 +17,7 @@ export function Home() {
 
   type TasksParams = {
     content: string;
+    createdAt: string;
     finished?: boolean;
   }
 
@@ -48,8 +49,11 @@ export function Home() {
       return;
     }
 
+    const date = Date.now();
+
     const currentTask = {
       content: newTask,
+      createdAt: format(date,'dd/LL/yyyy'),
     }
     
     setTasks([...tasks, currentTask]);
@@ -116,8 +120,9 @@ export function Home() {
           tasks.map((task, index) => {
             return(
               <Task 
-                key={index}
-                finished = {task.finished}
+                key= {index}
+                finished= {task.finished}
+                createdAt={task.createdAt}
                 handleRemoveTask={handleRemoveTask} 
                 handleCompleteTask={handleCompleteTask}>{task.content}</Task>
             )
