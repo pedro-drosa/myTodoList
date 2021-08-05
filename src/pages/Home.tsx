@@ -66,6 +66,13 @@ export function Home() {
     inputRef.current?.focus(); 
   }
 
+  function handleCompleteTask(event:FormEvent) {
+    const currentTask = event.currentTarget.parentElement?.parentElement?.firstElementChild?.firstElementChild?.innerHTML;
+    const currentIndex = tasks.findIndex( task => task.content === currentTask);
+    tasks[currentIndex].finished = !tasks[currentIndex].finished;
+    setTasks([...tasks]);
+  }
+
   function handleSetToday() {
     const date = new Date();
 
@@ -108,7 +115,11 @@ export function Home() {
         {
           tasks.map((task, index) => {
             return(
-              <Task key={index} handleRemoveTask={handleRemoveTask}>{task.content}</Task>
+              <Task 
+                key={index}
+                finished = {task.finished}
+                handleRemoveTask={handleRemoveTask} 
+                handleCompleteTask={handleCompleteTask}>{task.content}</Task>
             )
           })
         }

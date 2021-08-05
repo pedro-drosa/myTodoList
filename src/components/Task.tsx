@@ -5,25 +5,22 @@ import "../styles/task.scss";
 
 type TaskProps = {
   children: string;
+  finished?: boolean;
   handleRemoveTask: (event: FormEvent) => void;
+  handleCompleteTask: (event: FormEvent) => void;
 }
 
 export function Task(props: TaskProps) {
-  const [complete, setComplete] = useState<boolean>(false);
-
-  function handleComplete() {
-    setComplete(!complete);
-  }
 
   return(
-    <div className={`task ${complete ? 'complete' : ''}`}>
+    <div className={`task ${props.finished ? 'complete' : ''}`}>
       <div id="task-description">
         <p>{props.children}</p>
       </div>
       <div id="task-options">
-        <button onClick={handleComplete}>
+        <button onClick={props.handleCompleteTask}>
           {
-            complete ? <FiRefreshCw/> : <FiCheck/>
+            props.finished ? <FiRefreshCw/> : <FiCheck/>
           }
         </button>
         <button onClick={props.handleRemoveTask}>
