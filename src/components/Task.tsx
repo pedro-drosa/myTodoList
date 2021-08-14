@@ -1,7 +1,7 @@
 import { FormEvent, useState } from 'react';
 import { FiCheck, FiRefreshCw, FiX } from 'react-icons/fi';
 
-import "../styles/task.scss";
+import '../styles/task.scss';
 
 type TaskProps = {
   finished?: boolean;
@@ -9,11 +9,10 @@ type TaskProps = {
   createdAt: string;
   handleRemoveTask: (event: FormEvent) => void;
   handleCompleteTask: (event: FormEvent) => void;
-}
+};
 
 export function Task(props: TaskProps) {
-
-  return(
+  return (
     <div className={`task ${props.finished ? 'complete' : ''}`}>
       <div id="task-description">
         <p>{props.children}</p>
@@ -21,14 +20,12 @@ export function Task(props: TaskProps) {
       </div>
       <div id="task-options">
         <button onClick={props.handleCompleteTask}>
-          {
-            props.finished ? <FiRefreshCw/> : <FiCheck/>
-          }
+          {props.finished ? <FiRefreshCw /> : <FiCheck />}
         </button>
         <button onClick={props.handleRemoveTask}>
-          <FiX/>
+          <FiX />
         </button>
-      </div>    
+      </div>
     </div>
-  )
+  );
 }

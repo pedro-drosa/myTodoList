@@ -13,13 +13,14 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [TypeScript](https://www.typescriptlang.org/)
 
 ## 💻 Projeto
+
 Um app que permite controlar tarefas.
 
 <img alt="Mockup" src="https://res.cloudinary.com/pedro-drosa/image/upload/v1625874245/myTodoList_ikvucn.gif">
 
 ### Pré-requisitos
-Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas: [Git](https://git-scm.com), [NodeJS](https://nodejs.org), [Yarn](https://classic.yarnpkg.com).
 
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas: [Git](https://git-scm.com), [NodeJS](https://nodejs.org), [Yarn](https://classic.yarnpkg.com).
 
 ## 🚀 Como executar
 

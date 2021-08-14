@@ -3,25 +3,25 @@
   flex-direction: column;
   max-width: 960px;
   margin: 0 auto;
-  padding:  60px 30px;
+  padding: 60px 30px;
 
   header {
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    >div {
+    > div {
       display: flex;
       align-items: center;
-      
+
       span {
         font-weight: 700;
         font-size: 3.5em;
         margin-right: 15px;
       }
-      
+
       ul {
-          list-style: none;
+        list-style: none;
       }
     }
 
@@ -43,11 +43,11 @@
       font-size: 1.125em;
       border: 1.5px solid #ebecf0;
       background: #ebecf0;
-      border-radius:5px 0 0px 5px;
+      border-radius: 5px 0 0px 5px;
       flex: 8;
       padding: 20px;
       margin-bottom: 30px;
-      transition: border-color .5s;
+      transition: border-color 0.5s;
 
       &:focus {
         outline: none;
@@ -63,7 +63,7 @@
       align-items: center;
       justify-content: space-between;
       text-transform: uppercase;
-      
+
       &::before {
         content: '';
         background: #ebebeb;

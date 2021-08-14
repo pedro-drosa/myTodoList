@@ -35,13 +35,13 @@
       font-size: 1.5rem;
     }
 
-    & :nth-child(2){
+    & :nth-child(2) {
       margin-top: 3px;
       font-size: 0.9rem;
       color: #b1b1b1;
     }
   }
-  
+
   #task-options {
     margin-right: 30px;
 
@@ -51,7 +51,7 @@
       padding: 5px;
 
       svg {
-        font-size: 1.5em
+        font-size: 1.5em;
       }
 
       &:hover {
