@@ -1,17 +1,18 @@
-import { FormEvent, useState } from 'react';
+/* eslint-disable react/button-has-type */
+import { FormEvent } from 'react';
 import { FiCheck, FiRefreshCw, FiX } from 'react-icons/fi';
 
 import '../styles/task.scss';
 
 type TaskProps = {
-  finished?: boolean;
+  finished: boolean | undefined;
   children: string;
   createdAt: string;
   handleRemoveTask: (event: FormEvent) => void;
   handleCompleteTask: (event: FormEvent) => void;
 };
 
-export function Task(props: TaskProps) {
+export function Task(props: TaskProps): JSX.Element {
   return (
     <div className={`task ${props.finished ? 'complete' : ''}`}>
       <div id="task-description">
